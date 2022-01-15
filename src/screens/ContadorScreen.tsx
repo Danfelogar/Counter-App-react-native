@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Fab } from '../components/Fab';
 
 export const ContadorScreen = () => {
 
@@ -11,13 +12,25 @@ export const ContadorScreen = () => {
                 Contador: {contador}
             </Text>
 
-            <TouchableOpacity
+            <Fab
+                title='+1'
                 onPress={()=> setContador(contador + 1)}
+            />
+
+            <Fab
+                title='-1'
+                position='bl'
+                onPress={()=> setContador(contador - 1)}
+            />
+
+            {/* <TouchableOpacity
+                style={ styles.fabLocationBL }
+                onPress={()=> setContador(contador - 1)}
             >
-                <View style={styles.btnUp}>
-                    <Text>+1</Text>
+                <View style={styles.fab}>
+                    <Text style={styles.fabText} >-1</Text>
                 </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     )
 }
@@ -25,19 +38,15 @@ export const ContadorScreen = () => {
 
 const styles = StyleSheet.create({
     container:{
+        backgroundColor:'gray',
         flex: 1,
         //flex: 1 debe ir aqui apra asegurarnos que estamos tomando todo el espacio de la pantalla como si fuera a envolverlo
-        backgroundColor:'gray',
         justifyContent: 'center',
     },
     title:{
-        textAlign: 'center',
-        fontSize: 40,
         color: 'white',
+        fontSize: 40,
+        textAlign: 'center',
         top: -15,
     },
-    btnUp:{
-        backgroundColor:'orange',
-        borderRadius: 100,
-    }
 })
